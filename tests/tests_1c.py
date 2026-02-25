@@ -30,3 +30,6 @@ def test_zero(): # Test for list with 0s
 def test_empty_list():
     with pytest.raises(ValueError, match="List is empty"):
         max_subarray_sum([])
+
+if __name__ == "__main__":
+    pytest.main()
