@@ -31,11 +31,14 @@ def test_division_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero."):
         simple_calculator("divide", 5, 0)               # Test division by zero
 
+def test_invalid_number():
+    assert simple_calculator("addition", "/a", 5) == "Invalid input. Please enter a valid number." # Test for invalid number input
+    assert simple_calculator("multiply", 0, "") == "Invalid input. Please enter a valid number." # Test for empty number input
+
 def test_invalid_operation():
-    with pytest.raises(ValueError, match="Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'."):
-        simple_calculator("modulus", 5, 3)              # Test for invalid operation
-    with pytest.raises(ValueError, match="Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'."):
-        simple_calculator("", 5, 3)                     # Test for empty operation
+    assert simple_calculator("modulus", 5, 3) == "Invalid input. Please enter a valid operation." # Test for invalid operation
+    assert simple_calculator("", 5, 3) == "Invalid input. Please enter a valid operation." # Test for empty operation
+    assert simple_calculator(17, 2, 1) == "Invalid input. Please enter a valid operation." # Test for invalid operation type
 
 if __name__ == "__main__":
     pytest.main()
